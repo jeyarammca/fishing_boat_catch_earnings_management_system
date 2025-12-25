@@ -1,6 +1,6 @@
 // Fishing Boat Management System JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Activate Bootstrap tooltips
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Format currency
 function formatCurrency(value) {
-    return new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR'
-    }).format(value);
+    var symbol = window.CURRENCY_SYMBOL || '₹';
+    return symbol + parseFloat(value).toLocaleString('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
 }
 
 // Format number to 2 decimal places
@@ -106,7 +107,7 @@ function filterTable(inputSelector, tableSelector) {
 
     if (!input || !table) return;
 
-    input.addEventListener('keyup', function() {
+    input.addEventListener('keyup', function () {
         const filter = this.value.toUpperCase();
         const rows = table.querySelectorAll('tbody tr');
 
@@ -144,7 +145,7 @@ function togglePasswordVisibility(inputSelector, toggleSelector) {
 
     if (!input || !toggle) return;
 
-    toggle.addEventListener('click', function() {
+    toggle.addEventListener('click', function () {
         input.type = input.type === 'password' ? 'text' : 'password';
         toggle.classList.toggle('fa-eye');
         toggle.classList.toggle('fa-eye-slash');
@@ -180,7 +181,7 @@ function setActiveNavLink() {
 
     links.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === currentLocation || 
+        if (link.getAttribute('href') === currentLocation ||
             link.getAttribute('href').includes(currentLocation.replace('.php', ''))) {
             link.classList.add('active');
         }
@@ -191,7 +192,8 @@ setActiveNavLink();
 
 // Format currency display
 function formatCurrencyDisplay(value) {
-    return '₹' + parseFloat(value).toLocaleString('en-IN', {
+    var symbol = window.CURRENCY_SYMBOL || '₹';
+    return symbol + parseFloat(value).toLocaleString('en-IN', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
@@ -200,7 +202,7 @@ function formatCurrencyDisplay(value) {
 // Debounce function for search inputs
 function debounce(func, delay = 300) {
     let timeoutId;
-    return function(...args) {
+    return function (...args) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => func.apply(this, args), delay);
     };

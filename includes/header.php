@@ -6,6 +6,13 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+require_once __DIR__.'/../config/config.php';
+require_once __DIR__ . '/functions.php';
+
+// Initialize Settings
+$start_currency = get_setting($conn, 'currency_symbol', '₹');
+define('CURRENCY_SYMBOL', $start_currency);
+
 // Get user info
 $user_query = "SELECT * FROM users WHERE id = " . $_SESSION['user_id'];
 $user_result = execute_query($user_query);
@@ -38,6 +45,9 @@ $current_lang_label = $enabled_langs[$_SESSION['lang'] ?? 'en'] ?? strtoupper($_
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>assets/css/style.css">
+    <script>
+        window.CURRENCY_SYMBOL = "<?php echo CURRENCY_SYMBOL; ?>";
+    </script>
     
     <!-- Google Fonts (Noto Sans for regional languages) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -280,6 +290,11 @@ $current_lang_label = $enabled_langs[$_SESSION['lang'] ?? 'en'] ?? strtoupper($_
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo SITE_URL; ?>admin/language_settings.php" title="<?php echo __('language_settings') ?? 'Language Settings'; ?>">
                                     <i class="fas fa-language"></i> <?php echo __('language_settings') ?? 'Language Settings'; ?>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo SITE_URL; ?>admin/settings.php" title="System Settings">
+                                    <i class="fas fa-sliders-h"></i> System Settings
                                 </a>
                             </li>
                             <li class="nav-item">

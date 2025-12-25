@@ -136,7 +136,7 @@ require_once '../includes/header.php';
                             <td><?php echo date('d-M-Y', strtotime($row['trip_date'])); ?></td>
                             <td><?php echo $row['trip_reference']; ?></td>
                             <td><?php echo number_format($row['total_catch_kg'], 2); ?> Kg</td>
-                            <td><?php echo '₹' . number_format($row['total_income'], 2); ?></td>
+                            <td><?php echo CURRENCY_SYMBOL . number_format($row['total_income'], 2); ?></td>
                             <td><span class="badge bg-<?php echo ($row['status'] == 'completed') ? 'success' : (($row['status'] == 'pending') ? 'warning' : 'danger'); ?>"><?php echo ucfirst($row['status']); ?></span></td>
                             <td>
                                 <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#tripModal" onclick="editTrip(<?php echo htmlspecialchars(json_encode($row)); ?>)">

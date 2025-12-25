@@ -56,8 +56,8 @@ require_once '../includes/header.php';
             <p><?php echo number_format($trip['total_catch_kg'], 2); ?></p>
         </div>
         <div class="col-md-3">
-            <h6>Net Profit (₹)</h6>
-            <p>₹<?php echo number_format($trip['net_profit'], 2); ?></p>
+            <h6>Net Profit (<?=CURRENCY_SYMBOL?>)</h6>
+            <p><?=CURRENCY_SYMBOL?><?php echo number_format($trip['net_profit'], 2); ?></p>
         </div>
     </div>
 
@@ -94,8 +94,8 @@ require_once '../includes/header.php';
                                     <td><?php echo date('d-M-Y', strtotime($c['catch_date'])); ?></td>
                                     <td><?php echo $c['fish_name']; ?></td>
                                     <td><?php echo number_format($c['quantity_kg'],2); ?></td>
-                                    <td>₹<?php echo number_format($c['rate_per_kg'],2); ?></td>
-                                    <td>₹<?php echo number_format($c['total_amount'],2); ?></td>
+                                    <td><?=CURRENCY_SYMBOL?><?php echo number_format($c['rate_per_kg'],2); ?></td>
+                                    <td><?=CURRENCY_SYMBOL?><?php echo number_format($c['total_amount'],2); ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>
@@ -117,7 +117,7 @@ require_once '../includes/header.php';
                                 <tr>
                                     <td><?php echo date('d-M-Y', strtotime($e['expense_date'])); ?></td>
                                     <td><?php echo $e['expense_type']; ?></td>
-                                    <td>₹<?php echo number_format($e['amount'],2); ?></td>
+                                    <td><?=CURRENCY_SYMBOL?><?php echo number_format($e['amount'],2); ?></td>
                                     <td><?php echo substr($e['description'],0,80); ?></td>
                                 </tr>
                             <?php endwhile; ?>

@@ -118,7 +118,7 @@ require_once '../includes/header.php';
                             <td><?php echo (!empty($row['ended_at'])) ? date('d-M-Y H:i', strtotime($row['ended_at'])) : '<span class="text-muted">-</span>'; ?></td>
                             <td><span class="badge bg-info"><?php echo $row['fishermen_count']; ?></span></td>
                             <td><?php echo number_format($row['total_kg'], 2); ?></td>
-                            <td><strong>₹<?php echo number_format($row['total_amount'], 2); ?></strong></td>
+                            <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_amount'], 2); ?></strong></td>
                         </tr>
                     <?php endwhile; ?>
                     <?php if (!$has_records): ?>
@@ -139,7 +139,7 @@ require_once '../includes/header.php';
                         <h6><?php echo __('total_catch'); ?>: <strong><?php echo number_format($total_kg, 2); ?> Kg</strong></h6>
                     </div>
                     <div class="col-md-3">
-                        <h6><?php echo __('total_collection'); ?>: <strong>₹<?php echo number_format($total_amount, 2); ?></strong></h6>
+                        <h6><?php echo __('total_collection'); ?>: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_amount, 2); ?></strong></h6>
                     </div>
                 </div>
             </div>

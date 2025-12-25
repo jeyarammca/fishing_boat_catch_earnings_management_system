@@ -92,7 +92,7 @@ require_once '../includes/header.php';
                         <th>Category</th>
                         <th>Records</th>
                         <th>Total Quantity (Kg)</th>
-                        <th>Total Earnings (₹)</th>
+                        <th>Total Earnings (<?=CURRENCY_SYMBOL?>)</th>
                         <th>Average Rate/Kg</th>
                     </tr>
                 </thead>
@@ -112,8 +112,8 @@ require_once '../includes/header.php';
                             <td><span class="badge bg-info"><?php echo $row['category']; ?></span></td>
                             <td><?php echo $row['total_records']; ?></td>
                             <td><?php echo number_format($row['total_quantity'], 2); ?></td>
-                            <td><strong>₹<?php echo number_format($row['total_earnings'], 2); ?></strong></td>
-                            <td>₹<?php echo number_format($row['avg_rate'], 2); ?></td>
+                            <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_earnings'], 2); ?></strong></td>
+                            <td><?=CURRENCY_SYMBOL?><?php echo number_format($row['avg_rate'], 2); ?></td>
                         </tr>
                     <?php endwhile; ?>
                     <?php if (!$has_records): ?>
@@ -133,7 +133,7 @@ require_once '../includes/header.php';
                         <h6>Total Quantity: <strong><?php echo number_format($total_qty, 2); ?> Kg</strong></h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>Total Earnings: <strong>₹<?php echo number_format($total_earnings, 2); ?></strong></h6>
+                        <h6>Total Earnings: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_earnings, 2); ?></strong></h6>
                     </div>
                 </div>
             </div>

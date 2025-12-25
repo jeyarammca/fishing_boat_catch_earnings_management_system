@@ -103,9 +103,9 @@ require_once '../includes/header.php';
                             <th><?php echo __('trip_id'); ?></th>
                             <th><?php echo __('date'); ?></th>
                             <th><?php echo __('catch_kg'); ?></th>
-                            <th><?php echo __('income'); ?> (₹)</th>
-                            <th><?php echo __('expenses'); ?> (₹)</th>
-                            <th><?php echo __('net_profit'); ?> (₹)</th>
+                            <th><?php echo __('income'); ?> (<?=CURRENCY_SYMBOL?>)</th>
+                            <th><?php echo __('expenses'); ?> (<?=CURRENCY_SYMBOL?>)</th>
+                            <th><?php echo __('net_profit'); ?> (<?=CURRENCY_SYMBOL?>)</th>
                             <th><?php echo __('fishermen'); ?></th>
                         </tr>
                     </thead>
@@ -125,9 +125,9 @@ require_once '../includes/header.php';
                                     <td><?php echo (!empty($row['started_at'])) ? date('d-M-Y H:i', strtotime($row['started_at'])) : '<span class="text-muted">-</span>'; ?></td>
                                     <td><?php echo (!empty($row['ended_at'])) ? date('d-M-Y H:i', strtotime($row['ended_at'])) : '<span class="text-muted">-</span>'; ?></td>
                                     <td><?php echo number_format($row['total_kg'], 2); ?></td>
-                                    <td><strong class="text-success">₹<?php echo number_format($row['total_income'], 2); ?></strong></td>
-                                    <td><span class="text-danger">₹<?php echo number_format($row['total_expenses'], 2); ?></span></td>
-                                    <td><strong>₹<?php echo number_format($row['net_profit'], 2); ?></strong></td>
+                                    <td><strong class="text-success"><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_income'], 2); ?></strong></td>
+                                    <td><span class="text-danger"><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_expenses'], 2); ?></span></td>
+                                    <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($row['net_profit'], 2); ?></strong></td>
                                     <td><span class="badge bg-info"><?php echo $row['fishermen_count']; ?></span></td>
                                 </tr>
                         <?php endwhile; ?>
@@ -146,13 +146,13 @@ require_once '../includes/header.php';
                             <h6><?php echo __('total_catch'); ?>: <strong><?php echo number_format($total_kg, 2); ?> Kg</strong></h6>
                         </div>
                         <div class="col-md-3">
-                            <h6 class="text-success"><?php echo __('total_income'); ?>: <strong>₹<?php echo number_format($total_income, 2); ?></strong></h6>
+                            <h6 class="text-success"><?php echo __('total_income'); ?>: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_income, 2); ?></strong></h6>
                         </div>
                         <div class="col-md-3">
-                            <h6 class="text-danger"><?php echo __('total_expenses'); ?>: <strong>₹<?php echo number_format($total_expenses, 2); ?></strong></h6>
+                            <h6 class="text-danger"><?php echo __('total_expenses'); ?>: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_expenses, 2); ?></strong></h6>
                         </div>
                         <div class="col-md-3">
-                            <h6><?php echo __('total_profit'); ?>: <strong>₹<?php echo number_format($total_profit, 2); ?></strong></h6>
+                            <h6><?php echo __('total_profit'); ?>: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_profit, 2); ?></strong></h6>
                         </div>
                     </div>
                 </div>

@@ -138,8 +138,8 @@ require_once '../includes/header.php';
                             <td><?php echo date('d-M-Y', strtotime($row['catch_date'])); ?></td>
                             <td><strong><?php echo $row['fish_name']; ?></strong></td>
                             <td><?php echo number_format($row['quantity_kg'], 2); ?></td>
-                            <td>₹<?php echo number_format($row['rate_per_kg'], 2); ?></td>
-                            <td><strong>₹<?php echo number_format($row['total_amount'], 2); ?></strong></td>
+                            <td><?=CURRENCY_SYMBOL?><?php echo number_format($row['rate_per_kg'], 2); ?></td>
+                            <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_amount'], 2); ?></strong></td>
                             <td>
                                 <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#catchModal" onclick="editCatch(<?php echo htmlspecialchars(json_encode($row)); ?>)">
                                     <i class="fas fa-edit"></i>
@@ -187,7 +187,7 @@ require_once '../includes/header.php';
                             <?php 
                             $fish_types->data_seek(0);
                             while ($ft = $fish_types->fetch_assoc()): ?>
-                                <option value="<?php echo $ft['id']; ?>" data-rate="<?php echo $ft['default_rate']; ?>"><?php echo $ft['fish_name']; ?> (₹<?php echo number_format($ft['default_rate'], 2); ?>/Kg)</option>
+                                <option value="<?php echo $ft['id']; ?>" data-rate="<?php echo $ft['default_rate']; ?>"><?php echo $ft['fish_name']; ?> (<?=CURRENCY_SYMBOL?><?php echo number_format($ft['default_rate'], 2); ?>/Kg)</option>
                             <?php endwhile; ?>
                         </select>
                     </div>
@@ -198,7 +198,7 @@ require_once '../includes/header.php';
                     </div>
 
                     <div class="mb-3">
-                        <label for="rate_per_kg" class="form-label">Rate per Kg (₹) *</label>
+                        <label for="rate_per_kg" class="form-label">Rate per Kg (<?=CURRENCY_SYMBOL?>) *</label>
                         <input type="number" class="form-control" id="rate_per_kg" name="rate_per_kg" step="0.01" min="0" required>
                     </div>
 

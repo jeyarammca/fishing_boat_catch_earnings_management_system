@@ -95,9 +95,9 @@ require_once '../includes/header.php';
                         <th>Owner</th>
                         <th>Trips</th>
                         <th>Total Catch (Kg)</th>
-                        <th>Revenue (₹)</th>
-                        <th>Expenses (₹)</th>
-                        <th>Net Income (₹)</th>
+                        <th>Revenue (<?=CURRENCY_SYMBOL?>)</th>
+                        <th>Expenses (<?=CURRENCY_SYMBOL?>)</th>
+                        <th>Net Income (<?=CURRENCY_SYMBOL?>)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -121,9 +121,9 @@ require_once '../includes/header.php';
                             <td><?php echo $row['owner_name']; ?></td>
                             <td><span class="badge bg-primary"><?php echo $row['trip_count']; ?></span></td>
                             <td><?php echo number_format($row['total_kg'], 2); ?></td>
-                            <td><span class="text-success"><strong>₹<?php echo number_format($row['total_revenue'], 2); ?></strong></span></td>
-                            <td><span class="text-danger">₹<?php echo number_format($row['total_expenses'], 2); ?></span></td>
-                            <td><strong>₹<?php echo number_format($net_income, 2); ?></strong></td>
+                            <td><span class="text-success"><strong><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_revenue'], 2); ?></strong></span></td>
+                            <td><span class="text-danger"><?=CURRENCY_SYMBOL?><?php echo number_format($row['total_expenses'], 2); ?></span></td>
+                            <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($net_income, 2); ?></strong></td>
                         </tr>
                     <?php endwhile; ?>
                     <?php if (!$has_records): ?>
@@ -144,13 +144,13 @@ require_once '../includes/header.php';
                         <h6>Total Catch: <strong><?php echo number_format($total_kg, 2); ?> Kg</strong></h6>
                     </div>
                     <div class="col-md-2">
-                        <h6 class="text-success">Total Revenue: <strong>₹<?php echo number_format($total_revenue, 2); ?></strong></h6>
+                        <h6 class="text-success">Total Revenue: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_revenue, 2); ?></strong></h6>
                     </div>
                     <div class="col-md-2">
-                        <h6 class="text-danger">Total Expenses: <strong>₹<?php echo number_format($total_expenses, 2); ?></strong></h6>
+                        <h6 class="text-danger">Total Expenses: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_expenses, 2); ?></strong></h6>
                     </div>
                     <div class="col-md-2">
-                        <h6>Net Income: <strong>₹<?php echo number_format($total_revenue - $total_expenses, 2); ?></strong></h6>
+                        <h6>Net Income: <strong><?=CURRENCY_SYMBOL?><?php echo number_format($total_revenue - $total_expenses, 2); ?></strong></h6>
                     </div>
                 </div>
             </div>

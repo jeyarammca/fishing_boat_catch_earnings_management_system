@@ -53,10 +53,10 @@ require_once '../includes/header.php';
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title mb-0"><?php echo __('todays_income'); ?></h6>
-                            <h2 class="mb-0">₹<?php echo number_format($today_collection, 0); ?></h2>
+                            <h2 class="mb-0"><?=CURRENCY_SYMBOL?><?php echo number_format($today_collection, 0); ?></h2>
                         </div>
                         <div class="stat-icon">
-                            <i class="fas fa-rupee-sign fa-3x opacity-50"></i>
+                            <span class="fa-3x opacity-50" style="font-weight: bold; font-style: normal;"><?=CURRENCY_SYMBOL?></span>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ require_once '../includes/header.php';
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <h6 class="card-title mb-0"><?php echo __('todays_expenses'); ?></h6>
-                            <h2 class="mb-0">₹<?php echo number_format($total_expenses_today, 0); ?></h2>
+                            <h2 class="mb-0"><?=CURRENCY_SYMBOL?><?php echo number_format($total_expenses_today, 0); ?></h2>
                         </div>
                         <div class="stat-icon">
                             <i class="fas fa-money-bill fa-3x opacity-50"></i>
@@ -143,7 +143,7 @@ require_once '../includes/header.php';
                             <td><code><?php echo $trip['trip_id_auto']; ?></code></td>
                             <td><strong><?php echo $trip['boat_name']; ?></strong></td>
                             <td><?php echo date('d-M-Y', strtotime($trip['trip_date'])); ?></td>
-                            <td><strong>₹<?php echo number_format($trip['total_income'], 2); ?></strong></td>
+                            <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($trip['total_income'], 2); ?></strong></td>
                             <td><span class="badge bg-<?php echo ($trip['status'] == 'completed') ? 'success' : (($trip['status'] == 'pending') ? 'warning' : 'danger'); ?>"><?php echo ucfirst($trip['status']); ?></span></td>
                         </tr>
                     <?php endwhile; ?>

@@ -133,7 +133,7 @@ require_once '../includes/header.php';
                             <td><?php echo $row['boat_name']; ?></td>
                             <td><?php echo date('d-M-Y', strtotime($row['expense_date'])); ?></td>
                             <td><span class="badge bg-warning"><?php echo $row['expense_type']; ?></span></td>
-                            <td><strong>₹<?php echo number_format($row['amount'], 2); ?></strong></td>
+                            <td><strong><?=CURRENCY_SYMBOL?><?php echo number_format($row['amount'], 2); ?></strong></td>
                             <td><?php echo substr($row['description'], 0, 30); ?></td>
                             <td>
                                 <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#expenseModal" onclick="editExpense(<?php echo htmlspecialchars(json_encode($row)); ?>)">
@@ -189,7 +189,7 @@ require_once '../includes/header.php';
                     </div>
 
                     <div class="mb-3">
-                        <label for="amount" class="form-label">Amount (₹) *</label>
+                        <label for="amount" class="form-label">Amount (<?=CURRENCY_SYMBOL?>) *</label>
                         <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0" required>
                     </div>
 

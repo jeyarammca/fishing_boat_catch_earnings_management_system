@@ -143,6 +143,18 @@ CREATE TABLE expenses (
     INDEX idx_expense_date (expense_date)
 );
 
+-- System Settings Table
+CREATE TABLE system_settings (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    setting_key VARCHAR(255) UNIQUE NOT NULL,
+    setting_value VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Insert default settings
+INSERT INTO system_settings (setting_key, setting_value) VALUES ('currency_symbol', '₹');
+
 -- Insert sample data
 INSERT INTO users (username, password, email, role, full_name, mobile) VALUES
 ('admin', '$2y$10$YourHashedPasswordHere', 'admin@fishing.com', 'admin', 'Admin User', '9876543210'),
